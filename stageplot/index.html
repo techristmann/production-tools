@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>PCO Stage Plot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#f6f7f8; --surface:#ffffff; --fg:#1b2329; --muted:#5d6a73; --line:#dde2e6;
+  --accent:#1f6f8b; --accent-fg:#ffffff; --chip:#e6f0f4; --chip-fg:#134b5f; --warn:#a8561a; --danger:#c0392b;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#12171b; --surface:#1a2127; --fg:#e4e9ec; --muted:#9aa7b0; --line:#2c363e;
+  --accent:#6cb8d3; --accent-fg:#0d1a20; --chip:#1d3440; --chip-fg:#b9e1ef; --warn:#e3a06a; --danger:#ef7d70; color-scheme:dark}}
+body{background:var(--bg);color:var(--fg);font:15px/1.6 var(--body);margin:0}
+.wrap{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:40px 96px;display:flex;flex-direction:column;gap:40px}
+header{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{font:800 34px/1.15 var(--body);margin:0;text-wrap:balance}
+h2{font:700 22px/1.25 var(--body);margin:0;text-wrap:balance}
+h3{font:700 15px/1.3 var(--body);margin:0}
+p{margin:0;max-width:66ch}
+.lede{color:var(--muted);font-size:16px}
+section{display:flex;flex-direction:column;gap:14px}
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:14px}
+ol.steps>li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;align-items:start}
+ol.steps>li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--chip);color:var(--chip-fg);font-weight:700;display:grid;place-items:center;font-size:14px}
+ol.steps>li>div{min-width:0;display:flex;flex-direction:column;gap:8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{font:600 14px var(--body);border-radius:6px;padding:8px 14px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-fg);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.drag{cursor:grab;border-style:dashed}
+.hint{font-size:13px;color:var(--muted)}
+code,.mono{font:500 13px/1.5 var(--mono);background:var(--chip);color:var(--chip-fg);padding:1px 5px;border-radius:4px}
+textarea{width:100%;box-sizing:border-box;font:500 12px/1.5 var(--mono);background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:10px;resize:vertical;min-height:80px}
+details.tog{display:flex;flex-direction:column;gap:14px}
+details.tog summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px}
+details.tog summary::-webkit-details-marker{display:none}
+details.tog summary::before{content:"\25B8";color:var(--accent);font-size:16px;transition:transform .15s}
+details.tog[open] summary::before{transform:rotate(90deg)}
+details.tog[open] summary{margin-bottom:14px}
+details.tog summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
+.uses{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.uses .card{gap:6px}
+.uses p{font-size:14px;color:var(--muted)}
+.alt{margin:0;padding-left:20px;font-size:14px;display:flex;flex-direction:column;gap:4px}
+.alt li::marker{color:var(--muted)}
+a{color:var(--accent)}
+.btn,.btn:hover{color:var(--accent-fg)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Bentonville Worship Gatherings · Planning Center Services</div>
+  <h1>PCO Stage Plot</h1>
+  <p class="lede">A bookmark that adds Stage Plot AM and Stage Plot PM to a plan on the Bentonville Stage Plot, with each service's band already placed roughly where they stand. Leaders line up bottom left, the production coordinator bottom center, and the tech team bottom right.</p>
+  <p class="hint"><a href="../">&larr; All production tools</a></p>
+</header>
+
+<section id="install">
+  <h2>Install (about a minute)</h2>
+  <p class="hint">Works in Chrome on a computer.</p>
+  <ol class="steps">
+    <li><div><h3>Show your bookmarks bar</h3><p>Press <code>Cmd+Shift+B</code> on a Mac or <code>Ctrl+Shift+B</code> on Windows.</p></div></li>
+    <li><div>
+      <h3>Drag this button onto the bar</h3>
+      <div class="card">
+        <div class="row"><a class="btn drag" href="javascript:(()=&gt;{if(location.hostname!=='services.planningcenteronline.com'){alert('Open a plan in Planning Center Services first, then click this bookmark again.');return;}fetch('https://techristmann.github.io/production-tools/stageplot/stageplot.js?v='+Date.now(),{cache:'no-store'}).then(r=&gt;{if(!r.ok)throw new Error('HTTP '+r.status);return r.text();}).then(x=&gt;(0,eval)(x)).catch(e=&gt;alert('Could not load the Stage Plot code: '+e.message));})();">Stage Plot</a><span class="hint">Click and hold the button, drag it up to your bookmarks bar, and let go.</span></div>
+        <p class="hint">If the button won't drag into your bar, use one of the <a href="#other">other ways to add it</a> at the bottom of this page.</p>
+      </div>
+    </div></li>
+    <li><div><h3>Open a plan and click it</h3><p>Go to the plan you want in Planning Center Services, then click <b>Stage Plot</b> in your bookmarks bar. From any other Services page it uses the next upcoming plan. You need to be signed in to Planning Center.</p></div></li>
+  </ol>
+</section>
+
+<details id="use" class="tog">
+  <summary><h2>How To Use It</h2></summary>
+  <div class="uses">
+    <div class="card"><h3>It builds both plots</h3><p>A small panel opens in the corner of the plan. In a few seconds it adds <b>Stage Plot AM</b> (8:45 and 10:30 people) and <b>Stage Plot PM</b> (4:30 people), both on the Bentonville Stage Plot.</p></div>
+    <div class="card"><h3>Who goes where</h3><p>Drums center back, bass to its left, other instruments around the back. Singers form the front line, with any instrument they play tucked under their name: guitar singers left, keys singers right, vocalists in the middle.</p></div>
+    <div class="card"><h3>Bottom row</h3><p>Leaders (Teacher, Host, Worship Arts Point Person) on the left, the Production Coordinator in the center, and WC Tech (Campus Engineer, Audio, Graphics, Livestream) on the right.</p></div>
+    <div class="card"><h3>Fine-tune</h3><p>Click a plot's name in the panel to open it in the stage editor and drag anyone into their exact spot. Reload the plan page to see the new plots in its Files list.</p></div>
+    <div class="card"><h3>Running it again</h3><p>If the plan already has a Stage Plot AM or PM, it asks before replacing them. Replacing wipes any hand adjustments, so run it after the schedule is set.</p></div>
+    <div class="card"><h3>Who's left out</h3><p>Declined people are skipped. Ushers, prayer and other Production roles aren't placed, only the Coordinator.</p></div>
+    <div class="card"><h3>Print Packet</h3><p>The plots are named exactly what the Print Packet looks for, so they show up on the back of the Audio, GFX, Lighting and Livestream reports.</p></div>
+  </div>
+</details>
+
+<details id="other" class="tog">
+  <summary><h2>Other ways to add it</h2></summary>
+  <ol class="alt">
+    <li>Right-click your bookmarks bar and choose <b>Add page</b> (or <b>Add bookmark</b>).</li>
+    <li>Name it <b>Stage Plot</b>.</li>
+    <li>Paste the code below into the URL box and save.</li>
+  </ol>
+  <textarea readonly onclick="this.select()">javascript:(()=&gt;{if(location.hostname!=='services.planningcenteronline.com'){alert('Open a plan in Planning Center Services first, then click this bookmark again.');return;}fetch('https://techristmann.github.io/production-tools/stageplot/stageplot.js?v='+Date.now(),{cache:'no-store'}).then(r=&gt;{if(!r.ok)throw new Error('HTTP '+r.status);return r.text();}).then(x=&gt;(0,eval)(x)).catch(e=&gt;alert('Could not load the Stage Plot code: '+e.message));})();</textarea>
+</details>
+
+</div>
+</body>
+</html>
