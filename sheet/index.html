@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex">
 <title>PCO Production Sheet</title>
 <link id="f1" rel="preconnect" href="https://fonts.googleapis.com">
-<link id="f2" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<link id="f2" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
 <style id="st">
 /* Layout: one reading column; install first, then the approved lists (editable by the owner) */
 :root{
@@ -93,6 +93,11 @@ a{color:var(--accent)}
 .rtable .wh .row{gap:2px}
 .lnk{border:0;background:none;color:var(--accent);font:600 12px var(--body);cursor:pointer;padding:2px 0}
 .warn{color:var(--warn);font-weight:600}
+
+.clog{display:flex;flex-direction:column;gap:12px}
+.clog .card{gap:6px}
+.clog h3 small{font-weight:400;color:var(--muted);font-size:13px;margin-left:8px}
+.clog ul{margin:0;padding-left:20px;font-size:14px;display:flex;flex-direction:column;gap:4px}
 footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
 @media (max-width:560px){h1{font-size:27px}.wrap{padding-block:24px 110px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -106,7 +111,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
   <div class="eyebrow">Bentonville Worship Gatherings · Planning Center Services</div>
   <h1>PCO Production Sheet</h1>
   <p class="lede">A bookmark that opens a dropdown grid on top of any plan in Planning Center. Pick an entry for Leader AM/PM, Audio, Lights, the three ProPresenter columns or Livestream, and it saves to the plan right away under your own login.</p>
-  <p class="ver" data-ver></p>
+  <p class="ver" data-ver=""></p>
 </header>
 
 <section id="install">
@@ -117,13 +122,13 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     <li><div>
       <h3>Drag this button onto the bar</h3>
       <div class="card">
-        <div class="row"><a class="btn drag" data-drag href="#">Production Sheet</a><span class="hint" data-draghint aria-live="polite">Click and hold the button, drag it up to your bookmarks bar, and let go.</span></div>
+        <div class="row"><a class="btn drag" data-drag="" href="#">Production Sheet</a><span class="hint" data-draghint="" aria-live="polite">Click and hold the button, drag it up to your bookmarks bar, and let go.</span></div>
         <p class="hint">If the button won't drag into your bar, use one of the <a href="#other">other ways to add it</a> at the bottom of this page.</p>
       </div>
     </div></li>
     <li><div><h3>Open a plan and click it</h3><p>Go to any plan in Planning Center Services, then click <b>Production Sheet</b> in your bookmarks bar. You need to be signed in to Planning Center.</p></div></li>
   </ol>
-  <p class="hint"><span class="warn">When the lists change:</span> the panel shows its list version in the top corner. If yours is lower than the version at the top of this page, delete your old bookmark and add it again from here.</p>
+  <p class="hint"><span class="warn">When the version changes:</span> the panel shows its version in the top corner. If yours is lower than the version at the top of this page, delete your old bookmark and add it again from here.</p>
 </section>
 
 <details id="use" class="tog">
@@ -134,6 +139,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     <div class="card"><h3>Custom entry</h3><p>Choose <b>Custom…</b> at the bottom of a dropdown, type the entry and press Enter. It saves to this plan only and doesn't change the approved list.</p></div>
     <div class="card"><h3>Leader names</h3><p>The Leader dropdowns list people scheduled on that plan under BAND &gt; Vocals or on the LEADER team, followed by the Leader entries below. People who declined are left out.</p></div>
     <div class="card"><h3>Suggestions</h3><p>Suggestions are on when the sheet opens. Click <b>Suggestions</b> to hide or show them. A <span style="color:#1d5aa6;font-weight:600">blue</span> tag offers an entry for an empty cell. An <span style="color:#94560a;font-weight:600">orange</span> tag means what's there differs from the suggestion, like a typo, a duplicate or something left from an old template. Click a tag to use it. Nothing changes until you click.</p></div>
+    <div class="card"><h3>Intentional entries</h3><p>If an entry is off the approved list or differs from the suggestion on purpose, click the <span style="color:#1e7b34;font-weight:700">✓ Intentional</span> tag under it, or choose <b>Mark intentional</b> in its dropdown. It turns <span style="color:#1e7b34;font-weight:700">green and bold</span> and stops being flagged orange. In Planning Center the note shows with two asterisks in front, like <code>** 1 BP + 1 HH</code>. Typing <code>**</code> at the start of a Custom entry marks it too. Picking a different entry clears the mark. Choose <b>Unmark intentional</b> to undo it.</p></div>
     <div class="card"><h3>Dashes</h3><p>A dash means "no change from the item above." Suggestions follow this, so the first song gets "Band" and the song after it gets "-".</p></div>
     <div class="card"><h3>Pre-fill</h3><p>Click <b>Pre-fill</b> to fill empty cells with their suggestion, or "-" if there isn't one. Cells that already have text are never changed. Cells with more than one suggestion stay empty for you to pick.</p></div>
     <div class="card"><h3>Hide headers</h3><p>Tick <b>Hide headers</b> at the top to hide the section header rows and see only the items.</p></div>
@@ -144,24 +150,29 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 
 <details id="lists" class="tog">
   <summary><h2>Approved lists</h2></summary>
-  <div class="sechead"><span></span><button class="btn ghost" type="button" data-edit hidden>Edit lists</button></div>
-  <p class="hint" data-listhint>These are the entries in each dropdown, in the order they appear.</p>
-  <div class="lists" data-lists></div>
+  <div class="sechead"><span></span><button class="btn ghost" type="button" data-edit="" hidden="">Edit lists</button></div>
+  <p class="hint" data-listhint="">These are the entries in each dropdown, in the order they appear.</p>
+  <div class="lists" data-lists=""></div>
 </details>
 
 <details id="suggestions" class="tog">
   <summary><h2>Suggestions</h2></summary>
-  <div class="sechead"><span></span><button class="btn ghost" type="button" data-edit2 hidden>Edit suggestions</button></div>
-  <p class="hint" data-sughint>What the Suggestions and Pre-fill buttons offer for each kind of item. For each column, the first matching rule with a value is used. A blank cell means no suggestion, so Pre-fill puts "-" there. If a suggestion is the same as the entry above it, the tool suggests "-" instead.</p>
-  <div class="rtable" data-rules></div>
+  <div class="sechead"><span></span><button class="btn ghost" type="button" data-edit2="" hidden="">Edit suggestions</button></div>
+  <p class="hint" data-sughint="">What the Suggestions and Pre-fill buttons offer for each kind of item. For each column, the first matching rule with a value is used. A blank cell means no suggestion, so Pre-fill puts "-" there. If a suggestion is the same as the entry above it, the tool suggests "-" instead.</p>
+  <div class="rtable" data-rules=""></div>
+</details>
+
+<details id="changes" class="tog">
+  <summary><h2>Changelog</h2></summary>
+  <div class="clog" data-changelog=""></div>
 </details>
 
 <section id="other">
   <h2>Other ways to add the bookmark</h2>
   <p>Use these if dragging the button doesn't work. Each one starts by copying the bookmark code.</p>
   <div class="card">
-    <div class="row"><button class="btn" data-copy type="button">Copy bookmark code</button><span class="hint" data-copied aria-live="polite"></span></div>
-    <textarea data-code readonly aria-label="Bookmark code"></textarea>
+    <div class="row"><button class="btn" data-copy="" type="button">Copy bookmark code</button><span class="hint" data-copied="" aria-live="polite"></span></div>
+    <textarea data-code="" readonly="" aria-label="Bookmark code"></textarea>
   </div>
   <div class="uses">
     <div class="card"><h3>Chrome</h3><ol class="alt">
@@ -188,21 +199,22 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 
 <footer>The panel uses the same connection the Planning Center website uses. If Planning Center changes that, the panel may stop loading until it's updated.</footer>
 </div>
-<div class="bar" data-bar hidden>
-  <span class="msg" data-barmsg>Saving publishes a new version. Everyone will need to add the bookmark again to get it.</span>
-  <button class="btn ghost" type="button" data-cancel>Cancel</button>
-  <button class="btn" type="button" data-save>Save and publish</button>
+<div class="bar" data-bar="" hidden="">
+  <span class="msg" data-barmsg="">Saving publishes a new version. Everyone will need to add the bookmark again to get it.</span>
+  <button class="btn ghost" type="button" data-cancel="">Cancel</button>
+  <button class="btn" type="button" data-save="">Save and publish</button>
 </div>
 </template>
 <div id="app"></div>
-<script type="application/json" id="state">{"version":12,"updated":"2026-10-14","lists":{"Leader AM":["-","TECH","TBD"],"Leader PM":["-","TECH","TBD"],"Audio":["-","Spotify","Band","Band (Instrumental)","Teach","Teach + Video","Video","1 HH","2 HHs","1 HH + 1 BP","1 HH + 2 BP","1 BP","2 BPs"],"Lights":["-","Walk-In","Song Bright","Song Dim","Host","Generosity","Teach","Baptism","Video"],"PP: Audience":["-","Loops","Countdown","Loops + Countdown","Lyrics","Announcements","Teach","Generosity","Benediction","Video","Name Title Slide","Camera Feed"],"PP: Stage Layout":["-","Pre-Service","Worship","Host","Teach","Teach (No Timer)","Graphics","Video","Post-Service"],"PP: Timers":["Countdown","Service Start","Host","Teach","-"],"Livestream":["-","Loops","Loops + Countdown","Cam Only","Cam + Pro7 DSK","Cam + GFX DSK / PiP","Cam / Slides","Cam / Slides or PiP","Slide Only","Video Only","DDR After Band Stops"]},"rules":[{"kind":"first","text":"","pos":"any","v":{"PP: Timers":["Service Start"]}},{"kind":"song","text":"","pos":"any","v":{"Leader AM":["@song_leader"],"Leader PM":["@vocals_pm"],"Audio":["Band"],"Lights":["Song Bright","Song Dim"],"PP: Audience":["Lyrics"],"PP: Stage Layout":["Worship"],"Livestream":["Cam + Pro7 DSK"]}},{"kind":"title","text":"TEACHING","pos":"any","v":{"Leader AM":["@teacher_am"],"Leader PM":["@teacher_pm"],"Audio":["Teach"],"Lights":["Teach"],"PP: Audience":["Teach"],"PP: Stage Layout":["Teach"],"PP: Timers":["Teach"],"Livestream":["Cam / Slides or PiP"]}},{"kind":"title","text":"Ministry Highlight","pos":"any","v":{"Leader AM":["@host_am"],"Leader PM":["@host_pm"],"Audio":["1 HH"],"Lights":["Host"],"PP: Audience":["Announcements"],"PP: Stage Layout":["Host"],"PP: Timers":["Host"],"Livestream":["Cam + GFX DSK / PiP"]}},{"kind":"title","text":"Baptism","pos":"any","v":{"Leader AM":["-"],"Leader PM":["-"],"Audio":["1 HH + 1 BP"],"Lights":["Baptism"],"PP: Audience":["Camera Feed"],"PP: Stage Layout":["Video"],"Livestream":["Cam + Pro7 DSK"]}},{"kind":"title","text":"Video","pos":"any","v":{"Leader AM":["TECH"],"Leader PM":["TECH"],"Audio":["Video"],"Lights":["Video"],"PP: Audience":["Video"],"PP: Stage Layout":["Video"],"Livestream":["Video Only"]}},{"kind":"title","text":"Announcement Loop","pos":"top","v":{"Leader AM":["TECH"],"Leader PM":["TECH"],"Audio":["Spotify"],"Lights":["Walk-In"],"PP: Audience":["Loops"],"PP: Stage Layout":["Pre-Service"],"Livestream":["Loops + Countdown"]}},{"kind":"title","text":"Announcement Loop","pos":"bottom","v":{"Leader AM":["TECH"],"Leader PM":["TECH"],"Audio":["Spotify"],"Lights":["Walk-In"],"PP: Audience":["Loops"],"PP: Stage Layout":["Post-Service"],"Livestream":["DDR After Band Stops"]}},{"kind":"title","text":"Benediction","pos":"any","v":{"Leader AM":["-"],"Leader PM":["-"],"Audio":["-"],"Lights":["-"],"PP: Audience":["Benediction"],"PP: Stage Layout":["Graphics"],"Livestream":["Slide Only"]}},{"kind":"title","text":"Generosity","pos":"any","v":{"Lights":["Generosity"],"PP: Audience":["Generosity"],"PP: Stage Layout":["Graphics"],"Livestream":["Slide Only"]}}]}</script>
+<script type="application/json" id="state">{"version":14,"updated":"2026-10-26","lists":{"Leader AM":["-","TECH","TBD"],"Leader PM":["-","TECH","TBD"],"Audio":["-","Spotify","Band","Band (Instrumental)","Teach","Teach + Video","Video","1 HH","2 HHs","1 HH + 1 BP","1 HH + 2 BP","1 BP","2 BPs"],"Lights":["-","Walk-In","Song Bright","Song Dim","Host","Generosity","Teach","Baptism","Video"],"PP: Audience":["-","Loops","Countdown","Loops + Countdown","Lyrics","Announcements","Teach","Generosity","Benediction","Video","Name Title Slide","Camera Feed"],"PP: Stage Layout":["-","Pre-Service","Worship","Host","Teach","Teach (No Timer)","Graphics","Video","Post-Service"],"PP: Timers":["-","Countdown","Service Start","Host","Teach"],"Livestream":["-","Loops + Music","Cam Only","Lyrics DSK (ProPres)","Name DSK then alternate cam and slides (or use PiP)","Slide Only","Video Only","DDR After Band Stops","Lyrics DSK + Cams 3/4 and comms","5-min countdown"]},"rules":[{"kind":"first","text":"","pos":"any","v":{"PP: Timers":["Service Start"]}},{"kind":"song","text":"","pos":"any","v":{"Leader AM":["@song_leader"],"Leader PM":["@vocals_pm"],"Audio":["Band"],"Lights":["Song Bright","Song Dim"],"PP: Audience":["Lyrics"],"PP: Stage Layout":["Worship"],"Livestream":["Lyrics DSK (ProPres)"]}},{"kind":"title","text":"TEACHING","pos":"any","v":{"Leader AM":["@teacher_am"],"Leader PM":["@teacher_pm"],"Audio":["Teach"],"Lights":["Teach"],"PP: Audience":["Teach"],"PP: Stage Layout":["Teach"],"PP: Timers":["Teach"],"Livestream":["Name DSK then alternate cam and slides (or use PiP)"]}},{"kind":"title","text":"Ministry Highlight","pos":"any","v":{"Leader AM":["@host_am"],"Leader PM":["@host_pm"],"Audio":["1 HH"],"Lights":["Host"],"PP: Audience":["Announcements"],"PP: Stage Layout":["Host"],"PP: Timers":["Host"],"Livestream":["Name DSK then alternate cam and slides (or use PiP)"]}},{"kind":"title","text":"Baptism","pos":"any","v":{"Leader AM":["-"],"Leader PM":["-"],"Audio":["1 HH + 1 BP"],"Lights":["Baptism"],"PP: Audience":["Camera Feed"],"PP: Stage Layout":["Video"],"Livestream":["Lyrics DSK + Cams 3/4 and comms"]}},{"kind":"title","text":"Video","pos":"any","v":{"Leader AM":["TECH"],"Leader PM":["TECH"],"Audio":["Video"],"Lights":["Video"],"PP: Audience":["Video"],"PP: Stage Layout":["Video"],"Livestream":["Video Only"]}},{"kind":"title","text":"Announcement Loop","pos":"top","v":{"Leader AM":["TECH"],"Leader PM":["TECH"],"Audio":["Spotify"],"Lights":["Walk-In"],"PP: Audience":["Loops"],"PP: Stage Layout":["Pre-Service"],"Livestream":["Loops + Music"]}},{"kind":"title","text":"Announcement Loop","pos":"bottom","v":{"Leader AM":["TECH"],"Leader PM":["TECH"],"Audio":["Spotify"],"Lights":["Walk-In"],"PP: Audience":["Loops"],"PP: Stage Layout":["Post-Service"],"Livestream":["DDR After Band Stops"]}},{"kind":"title","text":"Benediction","pos":"any","v":{"Leader AM":["-"],"Leader PM":["-"],"Audio":["-"],"Lights":["-"],"PP: Audience":["Benediction"],"PP: Stage Layout":["Graphics"],"Livestream":["Slide Only"]}},{"kind":"title","text":"Generosity","pos":"any","v":{"Lights":["Generosity"],"PP: Audience":["Generosity"],"PP: Stage Layout":["Graphics"],"Livestream":["Slide Only"]}}],"changelog":[{"version":14,"date":"2026-10-26","changes":["Narrower grid columns so the whole sheet fits on a 13\" MacBook screen.","One version number (v1.xx), shown both on this page and in the panel's top corner.","Intentional entries: click the green ✓ Intentional tag, or choose Mark intentional in a dropdown, to keep an off-list or unexpected entry on purpose. It shows green and bold instead of orange, and is saved in Planning Center with two asterisks in front, like ** 1 BP + 1 HH. Typing ** at the start of a Custom entry marks it too.","Livestream list rewritten. Removed: Loops, Loops + Countdown + Music, Cam + Pro7 DSK, Cam + GFX DSK / PiP, Cam (GFX DSK) / Slides or PiP, Cam / Slides, Cam / Slides or PiP. Added: Loops + Music, Lyrics DSK (ProPres), Name DSK then alternate cam and slides (or use PiP), Lyrics DSK + Cams 3/4 and comms, 5-min countdown.","Livestream suggestions updated to match: songs → Lyrics DSK (ProPres); TEACHING and Ministry Highlight → Name DSK then alternate cam and slides (or use PiP); Baptism → Lyrics DSK + Cams 3/4 and comms; Announcement Loop at the top → Loops + Music."]}]}</script>
 <script type="text/plain" id="panel-src">(async function () {
   /* Production Sheet for Planning Center Services. Lists are filled in by the install page. */
-  var VERSION = '1.8';
   var LIST_VERSION = __LISTVER__;
+  var VERSION = '1.' + LIST_VERSION;
   var COLUMNS = ['Leader AM', 'Leader PM', 'Audio', 'Lights', 'PP: Audience', 'PP: Stage Layout', 'PP: Timers', 'Livestream'];
   var BUILT_IN = __LISTS__;
-  var CUSTOM = '__custom__', NONE = '__none__', CLEAR = '__clear__';
+  var CUSTOM = '__custom__', NONE = '__none__', CLEAR = '__clear__', INTENT = '__intent__', UNINTENT = '__unintent__';
+  var MARK = '**';
 
   var m = location.pathname.match(/\/plans\/(\d+)/);
   if (location.hostname !== 'services.planningcenteronline.com' || !m) {
@@ -240,7 +252,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
       var byCat = {};
       ((it.relationships.item_notes || {}).data || []).forEach(function (ref) {
         var n = notes[ref.id]; if (!n) return;
-        byCat[n.attributes.category_name] = { id: n.id, content: (n.attributes.content || '').trim() };
+        var raw = (n.attributes.content || '').trim(), old = raw.slice(-1) === '\u200B', intent = old || raw.indexOf(MARK) === 0;
+        byCat[n.attributes.category_name] = { id: n.id, content: (old ? raw.slice(0, -1) : intent ? raw.slice(MARK.length) : raw).trim(), intent: intent };
       });
       var who = (((it.relationships.item_assignments || {}).data) || []).map(function (ref) { var a = asg[ref.id]; return a && a.relationships.assignable && a.relationships.assignable.data && a.relationships.assignable.data.id; }).filter(Boolean);
       return { id: it.id, title: (it.attributes.title || '').trim(), type: it.attributes.item_type, key: it.attributes.key_name, len: it.attributes.length, pos: it.attributes.service_position, leaders: who, notes: byCat };
@@ -265,12 +278,12 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     '.stat.bad{color:#c0392b;font-weight:600}' +
     '.bdy{flex:1;overflow:auto}' +
     'table{border-collapse:separate;border-spacing:0;min-width:100%}' +
-    'th{position:sticky;top:0;background:#fff;z-index:2;text-align:left;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#6b7780;font-weight:600;padding:10px 8px;border-bottom:1px solid #e3e7ea;white-space:nowrap}' +
-    'th:first-child,td:first-child{position:sticky;left:0;background:#fff;z-index:1;min-width:190px;max-width:240px}' +
+    'th{position:sticky;top:0;background:#fff;z-index:2;text-align:left;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#6b7780;font-weight:600;padding:10px 4px;border-bottom:1px solid #e3e7ea;white-space:nowrap}' +
+    'th:first-child,td:first-child{position:sticky;left:0;background:#fff;z-index:1;min-width:150px;max-width:190px}' +
     'th:first-child{z-index:3}' +
-    'td{padding:5px 6px;border-bottom:1px solid #f0f2f4;vertical-align:middle}' +
+    'td{padding:5px 3px;border-bottom:1px solid #f0f2f4;vertical-align:middle}' +
     'td,th{transition:opacity .12s}' +
-    'td.it{padding-left:16px}' +
+    'td.it{padding-left:12px;padding-right:6px}' +
     'td.it b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}' +
     'td.it span{color:#8a959c;font-size:11.5px}' +
     'tr.hdr td{font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#1b2329;padding:9px 8px 9px 16px}' +
@@ -279,9 +292,9 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     'tr.song td.it b{font-weight:700}' +
     'button.gh{background:#fff;color:#1f6f8b}' +
     'button.gh.on{background:#1f6f8b;color:#fff}' +
-    '.chips{display:flex;flex-wrap:wrap;gap:3px;margin-top:3px;max-width:160px}' +
+    '.chips{display:flex;flex-wrap:wrap;gap:3px;margin-top:3px;max-width:128px}' +
     '.chips:empty{display:none}' +
-    '.chip{font:600 11.5px system-ui,sans-serif;border-radius:4px;padding:2px 6px;cursor:pointer;border:1px solid;white-space:nowrap;max-width:156px;overflow:hidden;text-overflow:ellipsis}' +
+    '.chip{font:600 11.5px system-ui,sans-serif;border-radius:4px;padding:2px 6px;cursor:pointer;border:1px solid;white-space:nowrap;max-width:124px;overflow:hidden;text-overflow:ellipsis}' +
     '.chip.add{background:#e3eefb;color:#1d5aa6;border-color:#9cbfe8}' +
     '.chip.fix{background:#fdecd2;color:#94560a;border-color:#f0c27e}' +
     'td.cf select{border-color:#e0a24a;box-shadow:inset 3px 0 0 #e0a24a}' +
@@ -290,11 +303,13 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     'table.hov td,table.hov th{opacity:.6}' +
     'table.hov .r,table.hov .c{opacity:1}' +
     'table.hov td.r.c select{border-color:#1f6f8b;box-shadow:0 0 0 2px rgba(31,111,139,.18)}' +
-    'select,input{font:13px system-ui,sans-serif;border:1px solid #d5dbe0;border-radius:5px;padding:5px 6px;background:#fff;color:#1b2329;width:160px;box-sizing:border-box;transition:background-color .6s}' +
+    'select,input{font:13px system-ui,sans-serif;border:1px solid #d5dbe0;border-radius:5px;padding:5px 6px;background:#fff;color:#1b2329;width:128px;box-sizing:border-box;transition:background-color .6s}' +
     '.cell{display:flex;gap:4px;align-items:center}' +
     'td{vertical-align:top}' +
     '.empty select{color:#a3adb4}' +
     '.ns select{color:#a8561a}' +
+    '.int select,.int input{color:#1e7b34;font-weight:700;border-color:#6dbb7f;box-shadow:inset 3px 0 0 #3f9d55}' +
+    '.chip.keep{background:#e3f4e7;color:#1e7b34;border-color:#8fcb9c}' +
     '.sv select,.sv input{background:#fff6d9}' +
     '.ok select,.ok input{background:#e5f4ea}' +
     '.er select,.er input{background:#fde8e6;border-color:#c0392b}' +
@@ -475,8 +490,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
       });
       $('#sub').textContent = plan.attributes.dates || '';
       $('#sub').title = plan.attributes.title || '';
-      $('#ver').textContent = 'Lists v' + LIST_VERSION;
-      $('#ver').title = 'Panel ' + VERSION;
+      $('#ver').textContent = 'v' + VERSION;
+      $('#ver').title = 'Production Sheet version ' + VERSION;
       computeSug();
       render();
       refreshChips();
@@ -508,7 +523,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     $('#sgb').onclick = function () { SUGMODE = !SUGMODE; this.classList.toggle('on', SUGMODE); refreshChips(); };
     var cols = COLUMNS.filter(function (c) { return cats[c]; });
     var tbl = document.createElement('table');
-    tbl.innerHTML = '<thead><tr><th style="padding-left:16px">Item</th>' + cols.map(function (c, i) { return '<th data-c="' + (i + 1) + '">' + esc(c) + '</th>'; }).join('') + '</tr></thead><tbody></tbody>';
+    tbl.innerHTML = '<thead><tr><th style="padding-left:12px">Item</th>' + cols.map(function (c, i) { return '<th data-c="' + (i + 1) + '">' + esc(c) + '</th>'; }).join('') + '</tr></thead><tbody></tbody>';
     var tb = tbl.querySelector('tbody');
     items.forEach(function (it) {
       var tr = document.createElement('tr');
@@ -560,7 +575,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     var chipBox = document.createElement('div'); chipBox.className = 'chips'; td.appendChild(chipBox);
     function drawChips() {
       chipBox.innerHTML = ''; td.classList.remove('cf');
-      if (!SUGMODE || !it.sug || !it.sug[cat]) return;
+      if (!SUGMODE || !it.sug || !it.sug[cat] || isInt()) return;
       var s = it.sug[cat], v = cur(), kind = null, vals = [];
       if (v === null) { kind = 'add'; vals = s.vals; }
       else if (s.ruled && s.vals.indexOf(v) < 0) { kind = 'fix'; vals = s.vals; td.classList.add('cf'); }
@@ -571,14 +586,23 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
         b.onclick = function () { save(x); };
         chipBox.appendChild(b);
       });
+      if (v !== null && (kind === 'fix' || offList(v))) {
+        var k = document.createElement('button'); k.className = 'chip keep';
+        k.textContent = '\u2713 Intentional';
+        k.title = 'Keep \u201c' + v + '\u201d on purpose. It turns green and stops being flagged.';
+        k.onclick = function () { save(v, true); };
+        chipBox.appendChild(k);
+      }
     }
     function cur() { return it.notes[cat] ? it.notes[cat].content : null; }
     function opts() { return LISTS[cat] || []; }
+    function isInt() { return !!(it.notes[cat] && it.notes[cat].intent); }
+    function offList(v) { return !/^Leader/.test(cat) && opts().indexOf(v) < 0; }
     function paint(state) {
-      var v = cur(), ns = v !== null && !/^Leader/.test(cat) && opts().indexOf(v) < 0;
-      td.classList.remove('empty', 'ns', 'sv', 'ok', 'er');
-      var k = state || (v === null ? 'empty' : ns ? 'ns' : ''); if (k) td.classList.add(k);
-      td.title = ns ? 'Not on the approved list' : '';
+      var v = cur(), intent = isInt(), ns = !intent && v !== null && offList(v);
+      td.classList.remove('empty', 'ns', 'sv', 'ok', 'er', 'int');
+      var k = state || (v === null ? 'empty' : intent ? 'int' : ns ? 'ns' : ''); if (k) td.classList.add(k);
+      td.title = intent ? 'Marked intentional' : ns ? 'Not on the approved list' : '';
     }
     function drawSelect() {
       wrap.innerHTML = '';
@@ -590,12 +614,13 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
       if (sg.length) html += '<optgroup label="Suggested">' + sg.map(function (o) { return '<option value="' + esc(o) + '">' + esc(o) + '</option>'; }).join('') + '</optgroup><optgroup label="All">';
       html += list.map(function (o) { return '<option value="' + esc(o) + '">' + esc(o) + '</option>'; }).join('');
       if (sg.length) html += '</optgroup>';
-      html += '<option disabled>────────</option><option value="' + CUSTOM + '">Custom…</option>' + (v !== null ? '<option value="' + CLEAR + '">Clear</option>' : '');
+      html += '<option disabled>────────</option><option value="' + CUSTOM + '">Custom…</option>' + (v !== null ? '<option value="' + CLEAR + '">Clear</option>' + (isInt() ? '<option value="' + UNINTENT + '">Unmark intentional</option>' : '<option value="' + INTENT + '">\u2713 Mark intentional</option>') : '');
       sel.innerHTML = html;
       sel.value = v === null ? NONE : v;
       sel.onchange = function () {
         if (sel.value === CUSTOM) { drawInput(); return; }
         if (sel.value === NONE) return;
+        if (sel.value === INTENT || sel.value === UNINTENT) { save(v, sel.value === INTENT); return; }
         save(sel.value === CLEAR ? null : sel.value);
       };
       wrap.appendChild(sel);
@@ -611,16 +636,19 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
       back.onmousedown = function (e) { e.preventDefault(); done = true; drawSelect(); };
       wrap.appendChild(inp); wrap.appendChild(back); inp.focus(); inp.select();
     }
-    async function save(val) {
-      var prev = it.notes[cat] ? { id: it.notes[cat].id, content: it.notes[cat].content } : null;
-      if (val === (prev && prev.content)) { drawSelect(); return; }
+    async function save(val, intent) {
+      if (val !== null && val.indexOf(MARK) === 0) { val = val.slice(MARK.length).trim(); intent = true; }
+      intent = !!intent && val !== null;
+      var prev = it.notes[cat] ? { id: it.notes[cat].id, content: it.notes[cat].content, intent: !!it.notes[cat].intent } : null;
+      if (prev && val === prev.content && intent === prev.intent) { drawSelect(); return; }
+      var body = val === null ? null : (intent ? MARK + ' ' : '') + val;
       var base = '/service_types/' + ST + '/plans/' + planId + '/items/' + it.id + '/item_notes';
-      if (val === null) delete it.notes[cat]; else it.notes[cat] = { id: prev && prev.id, content: val };
+      if (val === null) delete it.notes[cat]; else it.notes[cat] = { id: prev && prev.id, content: val, intent: intent };
       drawSelect(); paint('sv'); pending++; setStat();
       try {
         if (val === null) await api(base + '/' + prev.id, { method: 'DELETE' });
-        else if (prev) await api(base + '/' + prev.id, { method: 'PATCH', body: { data: { type: 'ItemNote', id: prev.id, attributes: { content: val } } } });
-        else { var res = await api(base, { method: 'POST', body: { data: { type: 'ItemNote', attributes: { content: val, item_note_category_id: cats[cat] } } } }); it.notes[cat].id = res.data.id; }
+        else if (prev) await api(base + '/' + prev.id, { method: 'PATCH', body: { data: { type: 'ItemNote', id: prev.id, attributes: { content: body } } } });
+        else { var res = await api(base, { method: 'POST', body: { data: { type: 'ItemNote', attributes: { content: body, item_note_category_id: cats[cat] } } } }); it.notes[cat].id = res.data.id; }
         saves++; paint('ok'); setTimeout(function () { if (td.classList.contains('ok')) paint(); }, 1500);
         refreshChips();
       } catch (e) {
@@ -657,7 +685,7 @@ var state=JSON.parse(document.getElementById('state').textContent);
     return 'javascript:'+encodeURIComponent(src);
   }
   var BM=bookmarklet(state);
-  q('[data-ver]').innerHTML='Current lists: <b>v'+state.version+'</b>, updated '+fmtDate(state.updated);
+  q('[data-ver]').innerHTML='Current version: <b>v1.'+state.version+'</b>, updated '+fmtDate(state.updated);
   q('[data-code]').value=BM;
   var dl=q('[data-drag]'); dl.setAttribute('href',BM);
   dl.addEventListener('click',function(e){e.preventDefault();q('[data-draghint]').textContent='Drag this button to your bookmarks bar instead of clicking it.';});
@@ -669,6 +697,28 @@ var state=JSON.parse(document.getElementById('state').textContent);
 
   function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
   function ib(txt,label,dis,fn,cls){var b=el('button','ib'+(cls?' '+cls:''),txt);b.type='button';b.title=label;b.setAttribute('aria-label',label);b.disabled=dis;b.addEventListener('click',fn);return b;}
+
+  /* ---------- Changelog ---------- */
+  function renderChangelog(){
+    var wrap=q('[data-changelog]'); wrap.innerHTML='';
+    var log=state.changelog||[];
+    if(!log.length){wrap.appendChild(el('p','hint','No changes recorded yet.'));return;}
+    log.forEach(function(e){
+      var c=el('div','card'); var h=el('h3',null,'v1.'+e.version); h.appendChild(el('small',null,fmtDate(e.date))); c.appendChild(h);
+      var ul=el('ul'); (e.changes||[]).forEach(function(t){ul.appendChild(el('li',null,t));}); c.appendChild(ul); wrap.appendChild(c);
+    });
+  }
+  function describeChanges(lists,rules){
+    var out=[];
+    COLS.forEach(function(c){
+      var a=state.lists[c]||[], b=lists[c]||[];
+      var rem=a.filter(function(x){return b.indexOf(x)<0;}), add=b.filter(function(x){return a.indexOf(x)<0;});
+      if(rem.length||add.length) out.push(c+' list: '+[add.length?'added '+add.join(', '):'',rem.length?'removed '+rem.join(', '):''].filter(Boolean).join('; ')+'.');
+      else if(a.join('\n')!==b.join('\n')) out.push(c+' list reordered.');
+    });
+    if(JSON.stringify(rules)!==JSON.stringify(state.rules)) out.push('Suggestions updated.');
+    return out.length?out:['Lists saved with no changes.'];
+  }
 
   /* ---------- Approved lists ---------- */
   function renderListsView(){
@@ -807,7 +857,7 @@ var state=JSON.parse(document.getElementById('state').textContent);
     var g=function(id){return document.getElementById(id).outerHTML;};
     var o='<', skel=o+'!doctype html>'+o+'html>'+o+'head>'+o+'meta charset=utf8>'+o+'meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">'+o+'style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}'+o+'/style>'+o+'/head>'+o+'body>\n';
     return skel+
-      '<title>PCO Production Sheet</title>\n'+g('f1')+'\n'+g('f2')+'\n'+g('st')+'\n'+g('tpl')+'\n<div id="app"></div>\n'+
+      '<title>Production Sheet</title>\n'+g('f1')+'\n'+g('f2')+'\n'+g('st')+'\n'+g('tpl')+'\n<div id="app"></div>\n'+
       '<script type="application/json" id="state">'+esc(JSON.stringify(newState))+'<\/script>\n'+
       g('panel-src')+'\n'+g('main')+'</body></html>';
   }
@@ -821,7 +871,9 @@ var state=JSON.parse(document.getElementById('state').textContent);
       return r.kind!=='title'?{kind:r.kind,text:'',pos:'any',v:v}:{kind:'title',text:r.text.trim(),pos:r.pos||'any',v:v};
     });
     var d=new Date(), pad=function(n){return(n<10?'0':'')+n;};
-    var ns={version:state.version+1,updated:d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()),lists:clean,rules:rules};
+    var day=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+    var log=[{version:state.version+1,date:day,changes:describeChanges(clean,rules)}].concat(state.changelog||[]);
+    var ns={version:state.version+1,updated:day,lists:clean,rules:rules,changelog:log};
     var sb=q('[data-save]'); sb.disabled=true; m.className='msg'; m.textContent='Publishing…';
     try{ await artifactNs.publish(buildDoc(ns)); }
     catch(e){
@@ -835,7 +887,7 @@ var state=JSON.parse(document.getElementById('state').textContent);
   q('[data-edit2]').addEventListener('click',function(){startEdit();});
   q('[data-cancel]').addEventListener('click',stopEdit);
   q('[data-save]').addEventListener('click',save);
-  renderListsView(); renderRulesView();
+  renderListsView(); renderRulesView(); renderChangelog();
 
   (async function(){
     try{
