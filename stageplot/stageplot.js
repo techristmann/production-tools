@@ -127,9 +127,12 @@ return{name,test,inService,people:relevant.filter(inService),existing:stages.dat
 /* ---------- read a plot's current tags ---------- */
 const loadTags=async sid=>{
 const t=await (await fetch(B+'/plans/'+pid+'/stages/'+sid+'/edit',{credentials:'same-origin'})).text();
-const el=new DOMParser().parseFromString(t,'text/html').querySelector('[data-react-class="Components.Plans.StageContainer"]');
-if(!el)throw new Error('Could not read the stage plot from Planning Center.');
-const p=JSON.parse(el.getAttribute('data-react-props'));
+/* Planning Center has used two markups for the editor's data; accept either */
+const doc=new DOMParser().parseFromString(t,'text/html');
+const el=doc.querySelector('[data-tapestry-react-component-name="Components.Plans.StageContainer"]')||doc.querySelector('[data-react-class="Components.Plans.StageContainer"]');
+const raw=el&&(el.getAttribute('data-tapestry-react-component-props')||el.getAttribute('data-react-props'));
+if(!raw)throw new Error('Could not read the stage plot from Planning Center.');
+const p=JSON.parse(raw);
 const tn={};(p.teams||[]).forEach(t=>{tn[t.id]=String(t.name).trim().toUpperCase();});
 return p.stage.stage_members.map(mm=>{const pp=mm.plan_person;const ppid=mm.plan_person_id?String(mm.plan_person_id):null;const s=ppid&&sched[ppid];
 return{id:mm.id,x:mm.x,y:mm.y,ppid,team:s?s.team:(pp?tn[pp.team_id]||'':''),pos:s?s.pos:(pp&&pp.position)||'',personId:s?s.personId:null,
